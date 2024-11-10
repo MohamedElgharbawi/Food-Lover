@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="/imgs/مطعم/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Food Lover</title>
+    <meta name="description" content="">
+    <script></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        *{
+            box-sizing:border-box;
+            padding:0;
+            margin:0;
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+        header{
+            height:100vh;
+            background:url(imgs/مطعم/home_bg.jpeg) center center/cover no-repeat;
+            position: relative;
+        }
+        header::after{
+            content:"";
+            position: absolute;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,.5);
+            top:0;
+            left:0;
+        }
+        header *{
+            z-index: 1;
+        }
+        header #navbar nav ul{
+            display: flex;
+            margin-right:100px;
+        }
+        header #navbar img{
+            margin-left: 80px;
+        }
+        header #navbar img{
+            width:80px;
+        }
+        header #navbar{
+            display:flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none; 
+        }
+        header #navbar nav ul li a{
+            padding:15px 20px ;
+            color:white;
+            font-weight:600;
+            /* transition:border 1s; */
+        }
+        header #navbar nav ul li a:hover{
+            border-bottom:2px solid #f2b530;
+        }
+        header .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height:75%;
+        }
+        header .content h1{
+            font-size:40px;
+            color:white;
+        }
+        header .content p{
+            margin:40px 0 20px;
+            color:white;
+        }
+        .primary-text{
+            color:#f2b530;
+        }
+        .btn{
+            display: inline-block;
+            padding:15px 30px;
+            border:none;
+            border-radius:15px;
+        }
+        header .content .btn-primary{
+            color:white;
+            border:1px solid white;
+        }
+        header .content .btn-primary:hover,.btn-secondry:hover{
+            background:#f2b530;
+        }
+        .container{
+            max-width:1100px;
+            margin:auto;
+        }
+        #about{
+            height:80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:#f4f4f4
+        }
+        #about .title,
+        #offers .title,
+        #menu .title{
+            text-align: center;
+            margin-bottom:4rem;
+        }
+        #about h2,
+        #offers h2,
+        #menu h2,
+        #gallery h2{
+            font-size:40px;
+            margin-bottom:20px;
+        }
+        #about h2,
+        #menu h2{
+            color:#383848;
+        }
+        #offers h2{
+            color:#f2b530;
+        }
+        #offers .title p{
+            color:white;
+            font-weight:500;
+        }
+        #about .title p,
+        #menu .title p{
+            font-size: 14px;
+            color:#9a9a9a;
+            font-weight: 600;
+        }
+        #about .about-content{
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-secondry{
+            color:#fff;
+            background:#383848;
+            margin-top:2rem;
+        }
+        #about .about-content img{
+            width:450px;
+        }
+        #about .about-content p{
+            color:#9a9a9a;
+            font-weight:500;
+            margin:0 7rem 1rem 0;
+            line-height:1.6;
+        }
+        .offers-items{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color:white;
+        }
+        #offers{
+            height:80vh;
+            background:url(imgs/مطعم/offer-background.jpg) center center/cover fixed;
+            display: flex;
+            justify-content: center;
+        }
+        #offers .offers-items img{
+            width:200px;
+        }
+        #offers .offers-items h3{
+            font-size:25px;
+            margin:15px 0;
+        }
+        #offers .offers-items p{
+            font-size:15px;
+            padding:0 15px;
+            font-weight:300;
+            margin-bottom:15px;
+        }
+        #offers .offers-items span{
+            font-size:18px;
+            font-weight:600;
+            margin-left:5px;
+        }
+        #menu{
+            background:#f4f4f4;
+            padding:5rem 0;
+        }
+        .menu-items{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu-items .menu-item img{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            margin-right:20px;
+        }
+        .menu-items .menu-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:40px;
+        }
+        .menu-items .menu-item h3{
+            color:#383848;
+            border-bottom:1px solid #c2bddb;
+            padding-bottom:10px;
+            position: relative;
+            margin-bottom:10px;
+        }
+        .menu-items .menu-item span{
+            position: absolute;
+            top:0;
+            right:0;
+        }
+        #menu .btn{
+            display: block;
+            margin:20px auto 0;
+            background:#f2b530;
+            color:white;
+            cursor:pointer;
+        }
+        #menu .btn:hover{
+            background: #383848;
+        }
+        #daytime{
+            background:url(imgs/مطعم/daytime_bg.jpeg) center center/cover fixed no-repeat ;
+            color:white;
+            text-align:center;
+        }
+        #daytime .daytime-items{
+            display:flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height:40vh;
+        }
+        #daytime .daytime-items h3{
+            font-size:32px;
+            margin:20px 0 10px;
+        }
+        #daytime .daytime-items p{
+            font-weight: 500;
+        }
+        #gallery .container .img-gallery img{
+            width:280px;
+            height:200px;
+            border-radius:15px;
+            margin:20px;
+            opacity:.8;
+        }
+        #gallery .container .img-gallery img:hover{
+            opacity: 1;
+            width:300px;
+            height:220px;
+        }
+        #gallery{
+            padding:8rem 0 6rem;
+            background:url(imgs/مطعم/offer-background.jpg)center center /cover no-repeat;
+            text-align: center;
+        }
+        #gallery .container .img-gallery{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap:wrap;
+        }
+        #contact{
+            padding:5rem 0;
+            background:#f4f4f4;
+        }
+        #contact .container{
+            max-width:900px;
+        }
+        #contact .contact-content{
+            display: flex;
+            align-items:center;
+            justify-content: space-evenly;
+        }
+        #contact .contact-content .contact-info{
+            width:50%;
+        }
+        #contact .contact-content .contact-info div{
+            margin:30px 0;
+            line-height:1.7;
+        }
+        #contact .contact-content .contact-info h3{
+            font-size:28px;
+            color:#383848;
+            margin-bottom:10px;
+        }
+        #contact .contact-content .contact-info p{
+            color:#9a9a9a;
+        }
+        #contact .contact-content .contact-info i{
+            color:#f2b530;
+            margin-right:5px;
+        }
+        #contact .contact-content .contact-info a i{
+            color:#fff;
+            background:#383848;
+            padding:15px;
+            border-radius:50%;
+            font-size:20px;
+        }
+        #contact .contact-content .contact-info a i:hover{
+            background:#f2b530;
+            color:#383848;
+        }
+        form{
+            width:50%;
+        }
+        input,textarea{
+            display: block;
+            width:100%;
+            padding:20px 15px;
+            margin:20px 0;
+            border:none;
+            background: #e3e3e3;
+        }
+        input{
+            border-radius:10px;
+        }
+        button[type="submit"]{
+            color:white;
+            background:#f2b530;
+        }
+        button[type="submit"]:hover{
+            background:#383848;
+            cursor:pointer;
+        }
+        footer{
+            background:#383848;
+            color:white;
+            text-align: center;
+            padding:15px 0;
+            font-size:14px;
+        }
+        footer a{
+            color:white;
+        }
+        .scroll{
+            width:27px;
+            height:27px;
+            display: grid;
+            place-items: center;
+            background:#9a9a9a;
+            border-radius:5px;
+            color:white;
+            position: fixed;
+            bottom:20px;
+            right:20px;
+            z-index:1;
+        }
+    </style>
+</head>
+<body>
+    <a href="#header" class="scroll"><i class="fa-solid fa-arrow-up"></i></a>
+    <header id="header">
+        <div id="navbar">
+            <img src="imgs/مطعم/logo.png" alt="Food lover Logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>Welcome To <span class="primary-text">Food Lover</span> Restaurant </h1>
+            <p>Here You Can Find Most Delicious Food In The World</p>
+            <a href="#" class="btn btn-primary">Book a Table</a>
+        </div>
+    </header>
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="title">
+                    <h2>The Food Lover History</h2>
+                    <p>More Than 25+ Years Experiance</p>
+                </div>
+                <div class="about-content">
+                    <div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ipsum quibusdam optio accusantium, nobis odit veritatis sequi minima atque? Officiis ipsam perspiciatis libero ex culpa enim velit magni hic reiciendis.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta ipsum quibusdam optio accusantium, nobis odit veritatis sequi minima atque? Officiis ipsam perspiciatis libero ex culpa enim velit magni hic reiciendis.</p>
+                    <a href="#" class="btn btn-secondry">Learn More</a>
+                    </div>
+                    <img src="imgs/مطعم/about_img.png" alt="pizza">
+                </div>
+            </div>
+        </section>
+        <section id="offers">
+            <div class="container">
+                <div class="title">
+                    <h2>Our Special Offers</h2>
+                    <p>More Than 25+ Years Experiance</p>
+                </div>
+                <div class="offers-items">
+                    <div>
+                        <img src="imgs/مطعم/offer1.png" alt="Quattro Pasta">
+                        <div>
+                            <h3>Quattro Pasta</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, rerum.</p>
+                            <p><del>$55.00</del><span class="primary-text">15.00$</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="imgs/مطعم/offer2.png" alt="Vegertarian Pasta">
+                        <div>
+                            <h3>Vegertarian Pasta</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, rerum.</p>
+                            <p><del>$30.00</del><span class="primary-text">10.00$</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="imgs/مطعم/offer3.png" alt="Glutten-Free Pasta">
+                        <div>
+                            <h3>Glutten-Free Pasta</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, rerum.</p>
+                            <p><del>$70.00</del><span class="primary-text">40.00$</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="menu">
+            <div class="container">
+                <div class="title">
+                    <h2>The Food Lover History</h2>
+                    <p>More Than 25+ Years Experiance</p>
+                </div>
+                <div class="menu-items">
+
+                    <div class="menu-items-left">
+
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food1.png" alt="LASAL cheese">
+                            <div>
+                                <h3>Lasal Cheese<span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food2.png" alt="JUMBO CRAB SHRIMP">
+                            <div>
+                                <h3>Jumbo Crap Shrimp<span class="primary-text">$24.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food3.png" alt="KOKTIAL JUICE">
+                            <div>
+                                <h3>Koktial Juice<span class="primary-text">$12.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food4.png" alt="CAPO STEAK">
+                            <div>
+                                <h3>Capo Steak<span class="primary-text">$60.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food5.png" alt="ORGANIC FRUIT SALAD">
+                            <div>
+                                <h3>Organic Fruit Salad<span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food6.png" alt="CHEESE PIZZA">
+                            <div>
+                                <h3>Cheese Pizza<span class="primary-text">$18.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="menu-items-right">
+
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food7.jpeg" alt="KOFTA MEAT">
+                            <div>
+                                <h3>Kofta Meat<span class="primary-text">$30.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food8.jpeg" alt="SPANISH PIES">
+                            <div>
+                                <h3>Spanish Pies<span class="primary-text">$20.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food9.jpeg" alt="CHEESE TOST">
+                            <div>
+                                <h3>Cheese Tost<span class="primary-text">$40.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food10.jpeg" alt="FRUIT SALAD">
+                            <div>
+                                <h3>Fruit Salad<span class="primary-text">$10.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food11.jpeg" alt="CHICKEN SHAWARMA">
+                            <div>
+                                <h3>Chicken Shawarma<span class="primary-text">$20.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="imgs/مطعم/food12.jpeg" alt="MEGA CHEESE PIZZA">
+                            <div>
+                                <h3>Mega Cheese Pizza<span class="primary-text">$50.00</span></h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, neque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn">Explore Full Menu</button>
+            </div>
+        </section>
+        <section id="daytime">
+
+            <div class="container">
+
+                <div class="daytime-items">
+
+                    <div class="daytime-item">
+                        <img src="imgs/مطعم/breckfastIcon.png" alt="BREAK FAST">
+                        <h3>Breakfast</h3>
+                        <p>8.00 am to 10.00 am</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="imgs/مطعم/lunchIcon.png" alt="LUNCH">
+                        <h3>Lunch</h3>
+                        <p>4.00 pm to 7.00 pm</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="imgs/مطعم/dinnerIcon.png" alt="DINNER">
+                        <h3>Dinner</h3>
+                        <p>9.00 am to 1.00 am</p>
+                    </div>
+                    <div class="daytime-item">
+                        <img src="imgs/مطعم/dessertIcon.png" alt="DESSERT">
+                        <h3>Dessert</h3>
+                        <p>All Day</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Our Food Gallery</h2>
+                <div class="img-gallery">
+                    <img src="imgs/مطعم/gallery1.jpeg" alt="Gallery 1">
+                    <img src="imgs/مطعم/gallery2.jpeg" alt="Gallery 2">
+                    <img src="imgs/مطعم/gallery3.jpeg" alt="Gallery 3">
+                    <img src="imgs/مطعم/gallery4.jpeg" alt="Gallery 4">
+                    <img src="imgs/مطعم/gallery5.jpeg" alt="Gallery 5">
+                    <img src="imgs/مطعم/gallery6.jpeg" alt="Gallery 6">
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div>
+                        <h3>Adress</h3>
+                        <p><i class="fa-solid fa-location-dot"></i>Hosary Mosque,6 October,Egypt</p>
+                        <p><i class="fa-solid fa-phone"></i>Phone: 0123456789</p>
+                        <p><i class="fa-solid fa-envelope"></i>Supprt@FoodLover.Com</p>
+                        </div>
+                        <div>
+                            <h3>Working Hours</h3>
+                            <p>8:00 Am To 11:00 Pm on Weekdays</p>
+                            <p>11:00 Pm To 1:00 Am on Weekends</p>
+                        </div>
+                        <div>
+                            <h3>Follow us</h3>
+                            <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <form action="" method="get">
+                        <input type="text" name="Name" id="Name" placeholder="Full Name" required>
+                        <input type="email" name="Email" id="Email" placeholder="Email Adress" required>
+                        <input type="text" name="Subject" id="Subject" placeholder="Subject" required>
+                        <textarea name="Message" id="Message" cols="30" rows="5" placeholder="Message"></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>CopyRight &copy; 2023 All Right Reserved | Made by <b><a href="#" target="_blank">Mohamed Khaled</a></b></p>
+    </footer>
+</body>
+</html>
